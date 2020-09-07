@@ -10,10 +10,19 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-
+    
+    let barcodeReader = BarcodeReader()
+    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var textLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        barcodeReader.delegate = self
+        //barcodeReader.setupCamera(view:self.view) // label 消える
+        barcodeReader.setupCamera(view:cameraView)
+        
+        // 読み込めるカメラ範囲
+        barcodeReader.readRange()
     }
 
 }
